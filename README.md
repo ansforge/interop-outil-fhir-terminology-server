@@ -1,3 +1,27 @@
+![Logo_LEF_CI-SIS](https://user-images.githubusercontent.com/48218773/227532484-eff82649-4e42-49c6-966a-dc3ea78cf59c.png)
+
+Ce dépôt est un fork de [FHIRsmith](https://github.com/HealthIntersections/FHIRsmith), le serveur
+de terminologie FHIR de référence, enrichi d'une configuration prête à l'emploi pour les
+terminologies françaises de l'ANS.
+
+## Configuration ANS (Agence du Numérique en Santé)
+
+Une configuration prête à l'emploi pour les terminologies françaises est disponible dans le dossier
+[configurations/](configurations/readme.md).
+
+Elle inclut :
+- Le package `ans.fr.terminologies-enriched` avec le contenu complet des CodeSystems depuis le SMT
+- SNOMED CT édition française
+- LOINC avec libellés français
+- Terminologies HL7, IPS, IHE
+
+Les fichiers volumineux sont téléchargés automatiquement au démarrage depuis
+`http://interop.esante.gouv.fr/tx/data`.
+
+Voir [configurations/readme-ans.md](configurations/readme-ans.md) pour les instructions d'installation.
+
+---
+
 # ![🔥](static/FHIRsmith64.png) FHIRsmith - FHIR Server toolkit
 
 This server provides a set of server-side services that are useful for the FHIR Community. The set of are two kinds of services:
