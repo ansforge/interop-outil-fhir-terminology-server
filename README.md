@@ -1,10 +1,10 @@
 ![Logo_LEF_CI-SIS](https://user-images.githubusercontent.com/48218773/227532484-eff82649-4e42-49c6-966a-dc3ea78cf59c.png)
 
-## Configuration ANS (Agence du Numérique en Santé)
-
 Ce dépôt est un fork de [FHIRsmith](https://github.com/HealthIntersections/FHIRsmith), le serveur
 de terminologie FHIR de référence, enrichi d'une configuration prête à l'emploi pour les
 terminologies françaises de l'ANS.
+
+## Configuration ANS (Agence du Numérique en Santé)
 
 Une configuration prête à l'emploi pour les terminologies françaises est disponible dans le dossier
 [configurations/](configurations/readme.md).
