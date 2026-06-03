@@ -17,7 +17,7 @@ Le fichier `ans-library.yaml` définit les sources terminologiques chargées par
 | `npm/cs:ihe.formatcode.fhir` | Codes de format IHE (XDS, IUA...) |
 | `url:…/ans.fr.terminologies-enriched-1.10.0.tgz` | Package ANS enrichi (voir ci-dessous) |
 | `snomed:snomed-fr.cache` | SNOMED CT édition française |
-| `loinc:loinc.db` | LOINC avec libellés français |
+| `loinc:loinc.db` | LOINC  |
 
 ## Qu'est-ce que le package enrichi ?
 
