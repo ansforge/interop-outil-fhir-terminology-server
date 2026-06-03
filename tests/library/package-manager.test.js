@@ -319,13 +319,12 @@ const runTests = shouldRunSlowTests();
                 expect(files).toContain('package.json');
             }, 30000);
 
-            test('should throw on duplicate fetch of same package', async () => {
+            test('should return cached package on duplicate fetch of same package', async () => {
                 const packageManager = new PackageManager(SERVERS, CACHE_FOLDER);
                 const url = 'https://packages2.fhir.org/packages/hl7.fhir.uv.tools/0.2.0';
-                await packageManager.fetchUrl(url);
-                await expect(
-                    packageManager.fetchUrl(url)
-                ).rejects.toThrow(/already exists in cache/);
+                const first = await packageManager.fetchUrl(url);
+                const second = await packageManager.fetchUrl(url);
+                expect(second).toBe(first);
             }, 30000);
 
             test('should throw on invalid URL', async () => {
