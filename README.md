@@ -12,7 +12,7 @@ Une configuration prête à l'emploi pour les terminologies françaises est disp
 Elle inclut :
 - Le package `ans.fr.terminologies-enriched` avec le contenu complet des CodeSystems depuis le SMT
 - SNOMED CT édition française
-- LOINC avec libellés français
+- LOINC 
 - Terminologies HL7, IPS, IHE
 
 Les fichiers volumineux sont téléchargés automatiquement au démarrage depuis
