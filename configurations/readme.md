@@ -24,13 +24,34 @@ opérations `$expand` et `$lookup` sur l'ensemble des codes ANS.
 
 ### Ce qui est inclus
 
-- **`ans.fr.terminologies-enriched#1.9.1`** — package ANS enrichi avec le contenu complet des CodeSystems depuis le SMT
+- **`ans.fr.terminologies-enriched#1.10.0`** — package ANS enrichi avec le contenu complet des CodeSystems depuis le SMT
 - **SNOMED CT édition française** — terminologie clinique en français
 - **LOINC** — avec les libellés français de référence
 - **HL7 terminology, IPS, IHE format codes** — terminologies internationales complémentaires
 
 Les paramètres `internalLimit` et `externalLimit` sont fixés à 1 000 000 pour permettre l'expansion
 des grands ValueSets ANS (certains contiennent plus de 3 000 codes).
+
+### Terminologies enrichies depuis le SMT
+
+Le package `ans.fr.terminologies#1.10.0` déclare les CodeSystems suivants en `"content": "not-present"`.
+Le script `enrich-ans-package.js` télécharge leur contenu complet depuis le SMT :
+
+| CodeSystem | URL | Concepts |
+|---|---|---|
+| TRE-R13-CommuneOM | https://mos.esante.gouv.fr/NOS/TRE_R13-CommuneOM/FHIR/TRE-R13-CommuneOM | 39 297 |
+| ATC WHO | https://smt.esante.gouv.fr/terminologie-atc | 7 055 |
+| BDPM (médicaments) | https://smt.esante.gouv.fr/terminologie-bdpm | 41 218 |
+| CCAM | https://smt.esante.gouv.fr/terminologie-ccam | 38 223 |
+| CIM-10 | https://smt.esante.gouv.fr/terminologie-cim-10 | 19 075 |
+| CIM-11 MMS | https://smt.esante.gouv.fr/terminologie-cim11-mms | 36 480 |
+| CISP | https://smt.esante.gouv.fr/terminologie-cisp | 1 434 |
+| CLADIMED | https://smt.esante.gouv.fr/terminologie-cladimed | 4 717 |
+| EMDN | https://smt.esante.gouv.fr/terminologie-emdn | 8 344 |
+| NUVA | https://smt.esante.gouv.fr/terminologie-nuva | 1 942 |
+| RUIM e-prescription | https://smt.esante.gouv.fr/terminologie-ruim-eeprescription | 22 897 |
+| SMS | https://smt.esante.gouv.fr/terminologie-sms | 71 998 |
+| Standard Terms (EDQM) | https://smt.esante.gouv.fr/terminologie-standardterms | 1 297 |
 
 ### Téléchargement automatique
 
@@ -61,32 +82,3 @@ npm run dev
 
 Le serveur de terminologie est accessible à l'adresse `http://localhost:3000/tx/r4`.
 
-### Génération manuelle des fichiers (optionnel)
-
-Si vous souhaitez générer les fichiers terminologiques vous-même plutôt que de les télécharger :
-
-1. **Générer le package ANS enrichi** — télécharge le contenu des CodeSystems depuis le SMT :
-   ```bash
-   node tx/importers/enrich-ans-package.js
-   ```
-   Puis créer l'archive `.tgz` à héberger sur votre serveur :
-   ```bash
-   cd data/terminology-cache
-   tar -czf ans.fr.terminologies-1.9.1-enriched.tgz "ans.fr.terminologies#1.9.1-enriched/"
-   ```
-
-2. **Importer LOINC** — nécessite une licence LOINC et les fichiers sources depuis [loinc.org](https://loinc.org) :
-   ```bash
-   node --max-old-space-size=8192 tx/importers/tx-import.js loinc import \
-     --source ./tx/data/Loinc_2.82 \
-     --dest ./data/terminology-cache/loinc.db \
-     --yes
-   ```
-
-3. **Importer SNOMED CT édition française** — nécessite une licence SNOMED CT :
-   ```bash
-   node --max-old-space-size=8192 tx/importers/tx-import.js snomed import \
-     --source ./tx/data/SnomedCT_ManagedServiceFrance \
-     --dest ./data/terminology-cache/snomed-fr.cache \
-     --yes
-   ```
