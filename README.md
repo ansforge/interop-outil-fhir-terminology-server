@@ -1,8 +1,10 @@
-# ![🔥](static/FHIRsmith64.png) FHIRsmith - FHIR Server toolkit
+![Logo_LEF_CI-SIS](https://user-images.githubusercontent.com/48218773/227532484-eff82649-4e42-49c6-966a-dc3ea78cf59c.png)
 
-This server provides a set of server-side services that are useful for the FHIR Community. The set of are two kinds of services:
+## Configuration ANS (Agence du Numérique en Santé)
 
-## <img src="https://user-images.githubusercontent.com/48218773/227532484-eff82649-4e42-49c6-966a-dc3ea78cf59c.png" height="40"/> Configuration ANS (Agence du Numérique en Santé)
+Ce dépôt est un fork de [FHIRsmith](https://github.com/HealthIntersections/FHIRsmith), le serveur
+de terminologie FHIR de référence, enrichi d'une configuration prête à l'emploi pour les
+terminologies françaises de l'ANS.
 
 Une configuration prête à l'emploi pour les terminologies françaises est disponible dans le dossier
 [configurations/](configurations/readme.md).
@@ -17,6 +19,12 @@ Les fichiers volumineux sont téléchargés automatiquement au démarrage depuis
 `http://interop.esante.gouv.fr/tx/data`.
 
 Voir [configurations/readme.md](configurations/readme.md) pour les instructions d'installation.
+
+---
+
+# ![🔥](static/FHIRsmith64.png) FHIRsmith - FHIR Server toolkit
+
+This server provides a set of server-side services that are useful for the FHIR Community. The set of are two kinds of services:
 
 ## Modules useful to anyone in the community
 
