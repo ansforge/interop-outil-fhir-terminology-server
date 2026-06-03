@@ -9,6 +9,8 @@ To use these, copy the relevant file to your local data directory, and rename to
 
 ## Configuration ANS
 
+![ANS](https://user-images.githubusercontent.com/48218773/227532484-eff82649-4e42-49c6-966a-dc3ea78cf59c.png)
+
 Les fichiers `ans-config.json` et `ans-library.yaml` fournissent une configuration prête à l'emploi
 pour déployer un serveur de terminologie FHIR avec les ressources françaises de l'ANS.
 
