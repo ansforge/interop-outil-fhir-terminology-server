@@ -7,35 +7,36 @@ To use these, copy the relevant file to your local data directory, and rename to
 
 ---
 
-## Configuration ANS (ans.fr.terminologies)
+## Configuration ANS
 
 Les fichiers `ans-config.json` et `ans-library.yaml` fournissent une configuration prête à l'emploi
 pour déployer un serveur de terminologie FHIR avec les ressources françaises de l'ANS.
 
+### Contenu de ans-library.yaml
+
+Le fichier `ans-library.yaml` définit les sources terminologiques chargées par le serveur :
+
+| Source | Description |
+|---|---|
+| `ucum:tx/data/ucum-essence.xml` | Unités de mesure UCUM |
+| `npm:hl7.terminology.r4#7.1.0` | Terminologies HL7 (v2, v3, FHIR core) |
+| `npm/cs:hl7.fhir.uv.ips#1.1.0` | CodeSystems du profil IPS (International Patient Summary) |
+| `npm/cs:ihe.formatcode.fhir` | Codes de format IHE (XDS, IUA...) |
+| `url:…/ans.fr.terminologies-enriched-1.10.0.tgz` | Package ANS enrichi (voir ci-dessous) |
+| `snomed:snomed-fr.cache` | SNOMED CT édition française |
+| `loinc:loinc.db` | LOINC avec libellés français |
+
 ### Qu'est-ce que le package enrichi ?
 
 Le package `ans.fr.terminologies` publié par l'ANS contient les ValueSets et CodeSystems du référentiel français.
-Cependant, la plupart des CodeSystems y sont déclarés sans contenu (`"content": "not-present"`).
+Cependant, certains CodeSystems y sont déclarés sans contenu (`"content": "not-present"`).
 
 Le **package enrichi** (`ans.fr.terminologies-enriched`) est une version augmentée de ce package dans laquelle
 le contenu complet de chaque CodeSystem a été téléchargé depuis le SMT (Système de Management des Terminologies
 d'eSanté, `https://smt.esante.gouv.fr/fhir`). Cela permet au serveur de terminologie de répondre aux
 opérations `$expand` et `$lookup` sur l'ensemble des codes ANS.
 
-### Ce qui est inclus
-
-- **`ans.fr.terminologies-enriched#1.10.0`** — package ANS enrichi avec le contenu complet des CodeSystems depuis le SMT
-- **SNOMED CT édition française** — terminologie clinique en français
-- **LOINC** — avec les libellés français de référence
-- **HL7 terminology, IPS, IHE format codes** — terminologies internationales complémentaires
-
-Les paramètres `internalLimit` et `externalLimit` sont fixés à 1 000 000 pour permettre l'expansion
-des grands ValueSets ANS (certains contiennent plus de 3 000 codes).
-
-### Terminologies enrichies depuis le SMT
-
-Le package `ans.fr.terminologies#1.10.0` déclare les CodeSystems suivants en `"content": "not-present"`.
-Le script `enrich-ans-package.js` télécharge leur contenu complet depuis le SMT :
+Les CodeSystems enrichis dans la version 1.10.0 sont :
 
 | CodeSystem | URL | Concepts |
 |---|---|---|
@@ -53,6 +54,9 @@ Le script `enrich-ans-package.js` télécharge leur contenu complet depuis le SM
 | SMS | https://smt.esante.gouv.fr/terminologie-sms | 71 998 |
 | Standard Terms (EDQM) | https://smt.esante.gouv.fr/terminologie-standardterms | 1 297 |
 
+Les paramètres `internalLimit` et `externalLimit` sont fixés à 1 000 000 pour permettre l'expansion
+des grands ValueSets ANS (certains contiennent plus de 3 000 codes).
+
 ### Téléchargement automatique
 
 Les fichiers terminologiques volumineux (SNOMED CT, LOINC, package ANS enrichi) sont hébergés sur le
@@ -64,21 +68,35 @@ automatiquement au démarrage s'ils ne sont pas déjà présents dans le cache l
 ### Installation
 
 ```bash
-# Cloner le dépôt et installer les dépendances
+# Cloner le dépôt
 git clone https://github.com/ansforge/interop-outil-fhir-terminology-server
 cd interop-outil-fhir-terminology-server
+
+# Installer les dépendances
 npm install
 
-# Créer le répertoire de données
-mkdir -p data
+# Créer les répertoires nécessaires
+mkdir -p data data/logs
 
-# Remplacer la configuration par défaut par la configuration ANS
+# Copier la configuration ANS
 cp configurations/ans-config.json data/config.json
 cp configurations/ans-library.yaml data/library.yaml
+```
 
-# Démarrer le serveur — les fichiers terminologiques sont téléchargés automatiquement au premier lancement
+### Démarrer le serveur
+
+**Mode développement** — rechargement automatique à chaque modification du code :
+```bash
 npm run dev
 ```
 
-Le serveur de terminologie est accessible à l'adresse `http://localhost:3000/tx/r4`.
+**Mode production** — démarrage stable sans rechargement automatique :
+```bash
+npm start
+```
 
+Au premier lancement, FHIRsmith télécharge automatiquement les fichiers terminologiques volumineux
+(SNOMED CT, LOINC, package ANS enrichi) depuis `http://interop.esante.gouv.fr/tx/data`.
+Ce téléchargement initial peut prendre quelques minutes.
+
+Le serveur de terminologie est ensuite accessible à l'adresse `http://localhost:3000/tx/r4`.
