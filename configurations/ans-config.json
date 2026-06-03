@@ -7,6 +7,14 @@
     }
   },
   "modules": {
+    "shl": { "enabled": false },
+    "vcl": { "enabled": false },
+    "xig": { "enabled": false },
+    "packages": { "enabled": false },
+    "registry": { "enabled": false },
+    "publisher": { "enabled": false },
+    "npmprojector": { "enabled": false },
+    "token": { "enabled": false },
     "tx": {
       "enabled": true,
       "librarySource": "./data/library.yaml",
@@ -22,15 +30,15 @@
           "context": null
         }
       ]
-    },
-    "logging": {
-      "level": "info",
-      "console": true,
-      "consoleErrors": false,
-      "maxFiles": 14,
-      "maxSize": "50m",
-      "flushInterval": 2000,
-      "flushSize": 200
     }
+  },
+  "logging": {
+    "level": "info",
+    "console": true,
+    "consoleErrors": false,
+    "maxFiles": 14,
+    "maxSize": "50m",
+    "flushInterval": 2000,
+    "flushSize": 200
   }
 }
