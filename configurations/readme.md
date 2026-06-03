@@ -100,3 +100,26 @@ Au premier lancement, FHIRsmith télécharge automatiquement les fichiers termin
 Ce téléchargement initial peut prendre quelques minutes.
 
 Le serveur de terminologie est ensuite accessible à l'adresse `http://localhost:3000/tx/r4`.
+
+### Déploiement via Docker
+
+Une image Docker est automatiquement construite à chaque push sur la branche `add-artefacts-ans` :
+
+```bash
+# Créer le répertoire de données sur l'hôte
+mkdir -p /var/lib/fhirsmith-ans
+
+# Copier la configuration ANS
+cp configurations/ans-config.json /var/lib/fhirsmith-ans/config.json
+cp configurations/ans-library.yaml /var/lib/fhirsmith-ans/library.yaml
+
+# Démarrer le conteneur
+docker run -d --name fhirsmith-ans \
+  -p 3000:3000 \
+  -e FHIRSMITH_DATA_DIR=/app/data \
+  -v /var/lib/fhirsmith-ans:/app/data \
+  ghcr.io/ansforge/interop-outil-fhir-terminology-server:cibuild
+```
+
+Au premier démarrage, FHIRsmith télécharge automatiquement les fichiers terminologiques dans
+`/var/lib/fhirsmith-ans/terminology-cache/`. Les démarrages suivants utilisent le cache local.

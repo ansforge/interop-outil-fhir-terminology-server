@@ -33,6 +33,22 @@ This server provides a set of server-side services that are useful for the FHIR 
 Note: In production, this server always runs behind an nginx reverse proxy, so there's no
 in-build support for SSL, rate limiting etc.
 
+## Configuration ANS (Agence du Numérique en Santé)
+
+Une configuration prête à l'emploi pour les terminologies françaises est disponible dans le dossier
+[configurations/](configurations/readme.md).
+
+Elle inclut :
+- Le package `ans.fr.terminologies-enriched` avec le contenu complet des CodeSystems depuis le SMT
+- SNOMED CT édition française
+- LOINC avec libellés français
+- Terminologies HL7, IPS, IHE
+
+Les fichiers volumineux sont téléchargés automatiquement au démarrage depuis
+`http://interop.esante.gouv.fr/tx/data`.
+
+Voir [configurations/readme.md](configurations/readme.md) pour les instructions d'installation.
+
 ## Quick Start
 
 There are 4 executable programs:
