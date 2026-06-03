@@ -18,7 +18,7 @@ Elle inclut :
 Les fichiers volumineux sont téléchargés automatiquement au démarrage depuis
 `http://interop.esante.gouv.fr/tx/data`.
 
-Voir [configurations/readme.md](configurations/readme.md) pour les instructions d'installation.
+Voir [configurations/readme-ans.md](configurations/readme-ans.md) pour les instructions d'installation.
 
 ---
 
