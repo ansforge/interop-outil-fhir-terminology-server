@@ -2,9 +2,7 @@
 
 This server provides a set of server-side services that are useful for the FHIR Community. The set of are two kinds of services:
 
-## Configuration ANS (Agence du Numérique en Santé)
-
-<img src="https://user-images.githubusercontent.com/48218773/227532484-eff82649-4e42-49c6-966a-dc3ea78cf59c.png" width="300"/>
+## <img src="https://user-images.githubusercontent.com/48218773/227532484-eff82649-4e42-49c6-966a-dc3ea78cf59c.png" height="40"/> Configuration ANS (Agence du Numérique en Santé)
 
 Une configuration prête à l'emploi pour les terminologies françaises est disponible dans le dossier
 [configurations/](configurations/readme.md).
