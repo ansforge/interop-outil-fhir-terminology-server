@@ -96,7 +96,7 @@ Le serveur de terminologie est ensuite accessible à l'adresse `http://localhost
 
 ## Déploiement via Docker
 
-Une image Docker est automatiquement construite à chaque push sur la branche `add-artefacts-ans` :
+Une image Docker est automatiquement.
 
 ```bash
 # Créer le répertoire de données sur l'hôte
