@@ -788,10 +788,10 @@ class Library {
         reject(new Error(`Download request failed: ${error.message}`));
       });
 
-      // Set timeout for request
-      request.setTimeout(30000, () => {
+      // Set timeout for request (10 minutes for large files like LOINC ~850MB)
+      request.setTimeout(600000, () => {
         request.destroy();
-        reject(new Error('Download timeout (30 seconds)'));
+        reject(new Error('Download timeout (10 minutes)'));
       });
     });
   }
