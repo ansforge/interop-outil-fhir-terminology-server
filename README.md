@@ -11,7 +11,7 @@ Une configuration prête à l'emploi pour les terminologies françaises est disp
 
 Elle inclut :
 - Le package `ans.fr.terminologies-enriched` avec le contenu complet des CodeSystems depuis le SMT
-- SNOMED CT édition française
+- SNOMED CT édition française 2025
 - LOINC 
 - Terminologies HL7, IPS, IHE
 

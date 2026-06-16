@@ -16,8 +16,12 @@ Le fichier `ans-library.yaml` définit les sources terminologiques chargées par
 | `npm/cs:hl7.fhir.uv.ips#1.1.0` | CodeSystems du profil IPS (International Patient Summary) |
 | `npm/cs:ihe.formatcode.fhir` | Codes de format IHE (XDS, IUA...) |
 | `url:…/ans.fr.terminologies-enriched-1.10.0.tgz` | Package ANS enrichi (voir ci-dessous) |
-| `snomed:snomed-fr.cache` | SNOMED CT édition française |
+| `snomed:snomed-fr.cache` | SNOMED CT édition française 2025 |
 | `loinc:loinc.db` | LOINC  |
+
+La SNOMED Clinical Terms® (SNOMED CT®) est utilisée avec l’autorisation de la SNOMED International, anciennement nommée International Health Terminology Standards Development Organisation (IHTSDO). Tous droits réservés. SNOMED CT® a été à l’origine créée par le College of American Pathologists. "SNOMED" et "SNOMED CT" sont des marques déposées de SNOMED International (anciennement IHTSDO).
+
+Toute personne physique ou morale souhaitant utiliser et/ou déployer un produit intégrant du contenu de la terminologie SNOMED CT sur le territoire français doit, au préalable, s'être enregistré sur le Serveur Multi-Terminologies de l'ANS et avoir accepté les conditions de la licence d'affiliation ([https://smt.esante.gouv.fr/licences-snomed/](https://smt.esante.gouv.fr/licences-snomed/)). Toute utilisation en dehors du territoire français nécessitera de s'enregistrer auprès de la SNOMED International ([https://mlds.ihtsdotools.org/#/register](https://mlds.ihtsdotools.org/#/register)).
 
 ## Qu'est-ce que le package enrichi ?
 
@@ -75,6 +79,14 @@ mkdir -p data data/logs
 cp configurations/ans-config.json data/config.json
 cp configurations/ans-library.yaml data/library.yaml
 ```
+
+## Mise à jour de la SNOMED CT
+La version de la SNOMED CT automatiquement téléchargée est fixe. Si vous souhaitez utiliser la SNOMED CT en production, vous aurez besoin de la mettre à jour de la façon suivante :
+1. Connectez-vous sur le [SMT](https://smt.esante.gouv.fr/)
+2. Si vous ne possédez pas de licence SNOMED CT, obtenez-en une sur l'[espace affilié du SMT](https://smt.esante.gouv.fr/licences-snomed/)
+3. Téléchargez la [dernière version de l'édition française](https://smt.esante.gouv.fr/terminologie-snomed-ct-fr/)
+4. Décompressez l'archive
+5. Lancez la commande suivante ```cp chemin_vers_archive/dat/snomed-fr.cache data/terminology-cache/snomed-fr.cache```
 
 ## Démarrer le serveur
 
